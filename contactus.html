@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Bodyguard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .contact-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 5%;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .contact-header h1 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .contact-header p {
+            font-size: 1.1rem;
+            color: #ccc;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .info-card i {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .info-card-content h3 {
+            margin-bottom: 8px;
+            color: var(--secondary-color);
+        }
+
+        .info-card-content p {
+            color: #ccc;
+            margin-bottom: 5px;
+        }
+
+        .info-card-content a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .info-card-content a:hover {
+            color: #d4ac0d;
+        }
+
+        .contact-form {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #333;
+        }
+
+        .contact-form h2 {
+            color: var(--secondary-color);
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            font-weight: 500;
+            
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #333;
+            background: #2a2a2a;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: 0.3s;
+            border-radius: 20px; /**/
+
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            background: #333;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #d4ac0d;
+            transform: translateY(-2px);
+        }
+
+        .social-links {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            text-align: center;
+        }
+
+        .social-links h3 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #2a2a2a;
+            border-radius: 50%;
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: 0.3s;
+            border: 1px solid #333;
+        }
+
+        .social-icons a:hover {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .success-message {
+            display: none;
+            background: #27ae60;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+    </style>
+    
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="logo">Bodyguard</a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="user-type.html" class="btn btn-primary">Get Started</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="contact-container">
+            <div class="contact-header">
+                <h1>Get in Touch</h1>
+                <p>Have questions or need assistance? We're here to help. Contact us through any of the channels below or fill out the form and we'll get back to you as soon as possible.</p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="info-card-content">
+                            <h3>Address</h3>
+                            <p>123 Security Street</p>
+                            <p>New York, NY 10001</p>
+                            <p>United States</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <i class="fas fa-phone"></i>
+                        <div class="info-card-content">
+                            <h3>Phone</h3>
+                            <p><a href="tel:+1234567890">+1 (234) 567-890</a></p>
+                            <p><a href="tel:+1234567891">+1 (234) 567-891</a></p>
+                            <p>Available 24/7</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <i class="fas fa-envelope"></i>
+                        <div class="info-card-content">
+                            <h3>Email</h3>
+                            <p><a href="mailto:support@bodyguard.com">support@bodyguard.com</a></p>
+                            <p><a href="mailto:info@bodyguard.com">info@bodyguard.com</a></p>
+                            <p>Response time: 24 hours</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <i class="fas fa-clock"></i>
+                        <div class="info-card-content">
+                            <h3>Business Hours</h3>
+                            <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                            <p>Saturday: 10:00 AM - 4:00 PM</p>
+                            <p>Sunday: Closed</p>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <h3>Follow Us</h3>
+                        <div class="social-icons">
+                            <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h2>Send us a Message</h2>
+                    <div class="success-message" id="successMessage">
+                        Thank you for your message! We'll get back to you soon.
+                    </div>
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject *</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category">Category *</label>
+                            <select id="category" name="category" required>
+                                <option value="">Select a category</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="support">Technical Support</option>
+                                <option value="billing">Billing Question</option>
+                                <option value="partnership">Partnership Opportunity</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" required placeholder="Please provide details about your inquiry..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>All Rights Reserved &copy; 2026 Bodyguard Platform</p>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+               
+            console.log('Form submitted with data:', data);
+
+            const successMessage = document.getElementById('successMessage');
+            successMessage.classList.add('show');
+            
+            this.reset();
+            
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

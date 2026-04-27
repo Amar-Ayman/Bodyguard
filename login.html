@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bodyguard - Login</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    
+    <header>
+        <a href="index.html" class="logo">Bodyguard</a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="user-type.html">Create Account</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h2 style="text-align: center; margin-bottom: 30px; color: #f1c40f;">Login</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required placeholder="example@mail.com">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required placeholder="********">
+                </div>
+                <div class="form-group">
+                    <label for="user-type">Account Type</label>
+                    <select id="user-type" required>
+                        <option value="client">Client</option>
+                        <option value="guard">Bodyguard</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+            </form>
+            <p style="text-align: center; margin-top: 20px;">Don't have an account? <a href="user-type.html" style="color:#f1c40f;">Register now</a></p>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // محتاج شرح 
+            const userType = document.getElementById('user-type').value;
+            
+            if (userType === 'client') {
+                window.location.href = 'client-dashboard.html';
+            } else {
+                window.location.href = 'bodyguard-dashboard.html';
+            }
+        });
+    </script>
+
+    <footer>
+        <p>All Rights Reserved &copy; 2026 Bodyguard Platform</p>
+    </footer>
+</body>
+</html>

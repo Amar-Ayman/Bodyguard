@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bodyguard - Booking Successful</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .confirmation-container {
+            max-width: 600px;
+            margin: 80px auto;
+            text-align: center;
+            background: var(--card-bg);
+            padding: 50px;
+            border-radius: 20px;
+            border: 2px solid var(--secondary-color);
+            box-shadow: 0 0 30px rgba(241, 196, 15, 0.2);
+        }
+        .success-icon {
+            font-size: 5rem;
+            color: #27ae60;
+            margin-bottom: 30px;
+        }
+        .order-id {
+            background: #2a2a2a;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 1.2rem;
+            margin: 20px 0;
+            display: inline-block;
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">Bodyguard</a>
+    </header>
+
+    <main>
+        <div class="confirmation-container">
+            <i class="fas fa-check-circle success-icon"></i>
+            <h1>Booking Successful!</h1>
+            <p style="font-size: 1.2rem; margin-top: 10px;">Thank you for trusting Bodyguard Platform. Your booking has been confirmed.</p>
+            
+            <div class="order-id">Order ID: #BG-2026-8842</div>
+            
+            <div style="margin-top: 30px; text-align: left; background: #2a2a2a; padding: 20px; border-radius: 10px;">
+                <h3 style="margin-bottom: 15px; color: #d4ac0d;">What Happens Next?</h3>
+                <ul>
+                    <li style="margin-bottom: 10px;"> Guard Ahmed Mansour will contact you to confirm the exact location and time.</li>
+                    <li style="margin-bottom: 10px;"> You can track your request status from your dashboard.</li>
+                    <li style="margin-bottom: 10px;"> For any inquiries, please contact our technical support.</li>
+                </ul>
+            </div>
+
+            <div style="margin-top: 40px; display: flex; gap: 20px; justify-content: center;">
+                <a href="client-dashboard.html" class="btn btn-primary">Back to Dashboard</a>
+                <button onclick="window.print()" class="btn btn-outline">Print Receipt</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>All Rights Reserved &copy; 2026 Bodyguard Platform</p>
+    </footer>
+</body>
+</html>

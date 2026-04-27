@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bodyguard - Choose User Type</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo">Bodyguard</a>
+    </header>
+
+    <main style="padding: 80px 5%; text-align: center;">
+        <h1>Welcome to Bodyguard</h1>
+        <p style="margin-bottom: 40px;">Please choose your account type to continue</p>
+
+        <div class="selection-container">
+            <div class="selection-card" onclick="window.location.href='register.html?type=client'">
+                <i class="fas fa-user"></i>
+                <h2>I am a Client</h2>
+                <p>I am looking for a professional bodyguard for my protection or event security.</p>
+                <a href="register.html?type=client" class="btn btn-primary" style="margin-top: 20px;">Register as Client</a>
+            </div>
+
+            <div class="selection-card" onclick="window.location.href='register.html?type=guard'">
+                <i class="fas fa-user-shield"></i>
+                <h2>I am a Bodyguard</h2>
+                <p>I want to offer my services and receive booking requests from clients.</p>
+                <a href="register.html?type=guard" class="btn btn-outline" style="margin-top: 20px;">Register as Guard</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>All Rights Reserved &copy; 2026 Bodyguard Platform</p>
+    </footer>
+</body>
+</html>

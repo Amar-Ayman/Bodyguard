@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bodyguard - Chat</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .chat-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: var(--card-bg);
+            border-radius: 15px;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #333;
+        }
+        .chat-header {
+            padding: 20px;
+            background: #2a2a2a;
+            border-bottom: 1px solid #333;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .message {
+            max-width: 70%;
+            padding: 12px 18px;
+            border-radius: 15px;
+            font-size: 0.95rem;
+        }
+        .message-received {
+            align-self: flex-start;
+            background: #333;
+            border-bottom-left-radius: 2px;
+        }
+        .message-sent {
+            align-self: flex-end;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            border-bottom-right-radius: 2px;
+        }
+        .chat-input {
+            padding: 20px;
+            background: #2a2a2a;
+            display: flex;
+            gap: 10px;
+            border-top: 1px solid #333;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background: #1e1e1e;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="logo">Bodyguard</a>
+        <nav>
+            <ul>
+                <li><a href="bodyguard-dashboard.html">Back to Dashboard</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="chat-container">
+            <div class="chat-header">
+                <div style="width: 40px; height: 40px; background: #555; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div>
+                    <h3 id="chat-with">Mohamed Samir (Client)</h3>
+                    <span style="font-size:15px; color: #27ae60;">Online</span>
+                </div>
+            </div>
+
+            <div class="chat-messages" id="chat-messages">
+                <div class="message message-received">Hello Captain Ahmed, thanks for accepting the request.</div>
+                <div class="message message-sent">Hello Mr. Mohamed, happy to serve you. What are the event details?</div>
+                <div class="message message-received">It's a private party for 5 hours, I need entrance security.</div>
+                <div class="message message-sent">Got it. The agreed price for this service is $250. Do you agree?</div>
+                <div class="message message-received">Yes, I agree.</div>
+            </div>
+
+            <div class="chat-input">
+                <input type="text" id="msg-input" placeholder="Type your message here...">
+                <button id="send-btn" class="btn btn-primary">Send</button>
+                <button id="payment-trigger" class="btn btn-outline">Request Payment</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const chatMessages = document.getElementById('chat-messages');
+        const msgInput = document.getElementById('msg-input');
+        const sendBtn = document.getElementById('send-btn');
+        const paymentTrigger = document.getElementById('payment-trigger');
+
+        sendBtn.addEventListener('click', function() {
+            if (msgInput.value.trim() !== "") {
+                const msg = document.createElement('div');
+                msg.className = 'message message-sent';
+                msg.innerText = msgInput.value;
+                chatMessages.appendChild(msg);
+                msgInput.value = "";
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        });
+
+        paymentTrigger.addEventListener('click', function() {
+            alert('Payment link sent to client successfully!');
+            localStorage.setItem('payment_ready', 'true');
+            window.location.href = 'payment.html';
+        });
+    </script>
+
+    <footer>
+        <p>All Rights Reserved &copy; 2026 Bodyguard Platform</p>
+    </footer>
+</body>
+</html>

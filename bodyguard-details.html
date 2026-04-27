@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bodyguard - Guard Details</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .details-container {
+            padding: 40px 5%;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+        }
+        .guard-profile-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            background: #333;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: var(--secondary-color);
+        }
+        .info-section {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #333;
+        }
+        .info-section h2 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+        .review-card {
+            background: #2a2a2a;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">Bodyguard</a>
+        <nav>
+            <ul>
+                <li><a href="client-dashboard.html">Back to Dashboard</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="details-container">
+        <div class="guard-profile-card">
+
+            <h1 id="guard-name">Ammar Ayman</h1>
+            <div class="rating" style="color: #f1c40f; margin: 10px 0;">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <span id="guard-rating">(4.8)</span>
+            </div>
+            <p style="margin-bottom: 20px; color: #aaa;">Professional bodyguard specialized in VIP protection and large-scale event security.</p>
+            <button id="book-btn" class="btn btn-primary" style="width: 100%;">Send Booking Request</button>
+        </div>
+
+        <section>
+            <div class="info-section">
+                <h2>Certificates & Medals</h2>
+                <ul style="list-style: none; margin-bottom: 30px;">
+                    <li style="margin-bottom: 10px;"><i class="fas fa-medal" style="color: #f1c40f; margin-right: 10px;"></i> National Karate Champion 2020</li>
+                    <li style="margin-bottom: 10px;"><i class="fas fa-certificate" style="color: #f1c40f; margin-right: 10px;"></i> Certified First Aid Responder</li>
+                    <li style="margin-bottom: 10px;"><i class="fas fa-certificate" style="color: #f1c40f; margin-right: 10px;"></i> Advanced VIP Protection Course</li>
+                </ul>
+
+                <h2>Professional Experience</h2>
+                <p style="margin-bottom: 30px;">Over 8 years of experience working with international security firms. Secured more than 50 major events and protected numerous public figures and business leaders.</p>
+
+                <h2>Client Reviews</h2>
+                <div class="review-card">
+                    <div class="review-header">
+                        <strong>Mohamed S.</strong>
+                        <div style="color: #f1c40f;"><i class="fas fa-star"></i> 5/5</div>
+                    </div>
+                    <p>Very professional and punctual. I felt completely safe throughout the entire assignment.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <strong>Sarah A.</strong>
+                        <div style="color: #f1c40f;"><i class="fas fa-star"></i> 4.5/5</div>
+                    </div>
+                    <p>Excellent communication and quick thinking. Highly recommended.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const guardId = urlParams.get('id');
+        
+        const guards = {
+            "1": { name: "Mo3taz Mabrouk", rating: 4.8 },
+            "2": { name: "Ammar Ayman", rating: 4.5 },
+            "3": { name: "Ebrahim Mohammed", rating: 4.9 },
+            "4": { name: "Noah Elnoahy", rating: 4.2 }
+        };
+
+        if (guards[guardId]) {
+            document.getElementById('guard-name').innerText = guards[guardId].name;
+            document.getElementById('guard-rating').innerText = `(${guards[guardId].rating})`;
+        }
+
+        document.getElementById('book-btn').addEventListener('click', function() {
+            alert('Booking request sent to ' + document.getElementById('guard-name').innerText + '. You will be notified once accepted.');
+            localStorage.setItem('last_request_status', 'pending');
+            window.location.href = 'client-dashboard.html';
+        });
+    </script>
+
+    <footer>
+        <p>All Rights Reserved &copy; 2026 Bodyguard Platform</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bodyguard - Guard Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .dashboard-container {
+            padding: 40px 5%;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .stat-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+        .stat-card h3 {
+            color: var(--secondary-color);
+            font-size: 2rem;
+        }
+        .requests-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+        .requests-table th, .requests-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+        .requests-table th {
+            background: #2a2a2a;
+            color: var(--secondary-color);
+        }
+        .status-pending { color: #f1c40f; }
+        .status-accepted { color: #27ae60; }
+        .status-rejected { color: #e74c3c; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">Bodyguard</a>
+        <nav>
+            <ul>
+                <li><a href="guard-dashboard.html">Dashboard</a></li>
+                <li><a href="index.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dashboard-container">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+            <h1>Welcome, Captain Ahmed Mansour</h1>
+            <div class="btn btn-outline">Edit Profile</div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <p>Total Requests</p>
+                <h3>12</h3>
+            </div>
+            <div class="stat-card">
+                <p>Overall Rating</p>
+                <h3>4.8</h3>
+            </div>
+            <div class="stat-card">
+                <p>Working Hours</p>
+                <h3>150</h3>
+            </div>
+            <div class="stat-card">
+                <p>Total Earnings</p>
+                <h3>$15,000</h3>
+            </div>
+        </div>
+
+        <h2 style="margin-bottom: 20px;">Incoming Requests</h2>
+        <table class="requests-table">
+            <thead>
+                <tr>
+                    <th>Client Name</th>
+                    <th>Date</th>
+                    <th>Duration</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="requests-list">
+                <!-- Populated by JavaScript -->
+            </tbody>
+        </table>
+    </main>
+
+    <script>
+        const requests = [
+            { id: 101, client: "Sohar", date: "2026-04-25", duration: "5 Hours", status: "pending" },
+            { id: 102, client: "Farah", date: "2026-04-28", duration: "Full Day", status: "pending" },
+            { id: 103, client: "Khaled Mahmoud", date: "2026-04-20", duration: "3 Hours", status: "accepted" }
+        ];
+
+        const requestsList = document.getElementById('requests-list');
+
+        function renderRequests() {
+            requestsList.innerHTML = '';
+            requests.forEach(req => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${req.client}</td>
+                    <td>${req.date}</td>
+                    <td>${req.duration}</td>
+                    <td class="status-${req.status}">${req.status === 'pending' ? 'Pending' : (req.status === 'accepted' ? 'Accepted' : 'Rejected')}</td>
+                    <td>
+                        ${req.status === 'pending' ? `
+                            <button onclick="updateStatus(${req.id}, 'accepted')" class="btn btn-primary" style="padding: 5px 15px; font-size: 0.8rem;">Accept</button>
+                            <button onclick="updateStatus(${req.id}, 'rejected')" class="btn btn-outline" style="padding: 5px 15px; font-size: 0.8rem;">Reject</button>
+                        ` : (req.status === 'accepted' ? `<a href="chat.html?clientId=${req.id}" class="btn btn-primary" style="padding: 5px 15px; font-size: 0.8rem;">Chat</a>` : '-')}
+                    </td>
+                `;
+                requestsList.appendChild(row);
+            });
+        }
+
+        window.updateStatus = function(id, newStatus) {
+            const req = requests.find(r => r.id === id);
+            if (req) {
+                req.status = newStatus;
+                renderRequests();
+                if (newStatus === 'accepted') {
+                    alert('Request accepted! You can now chat with the client to agree on the price.');
+                    window.location.href = 'chat.html?clientId=' + id;
+                }
+            }
+        };
+
+        renderRequests();
+    </script>
+
+    <footer>
+        <p>All Rights Reserved &copy; 2026 Bodyguard Platform</p>
+    </footer>
+</body>
+</html>

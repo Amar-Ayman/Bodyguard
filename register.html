@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bodyguard - Create New Account</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">Bodyguard</a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h2 id="form-title" style="text-align: center; margin-bottom: 30px; color: #f1c40f;">Create New Account</h2>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required placeholder="example@mail.com">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required placeholder="********">
+                </div>
+
+                <!-- Additional fields for Bodyguard -->
+                <div id="guard-fields" style="display: none;">
+                    <div class="form-group">
+                        <label for="experience">Years of Experience</label>
+                        <input type="number" id="experience" placeholder="e.g., 5">
+                    </div>
+                    <div class="form-group">
+                        <label for="medals">Medals and Achievements</label>
+                        <textarea id="medals" rows="3" placeholder="Mention your top athletic achievements"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="certificates">Certified Credentials</label>
+                        <textarea id="certificates" rows="3" placeholder="Mention the certificates you have earned"></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
+            </form>
+            <p style="text-align: center; margin-top: 20px;">Already have an account? <a href="login.html" style="color: #f1c40f;">Login here</a></p>
+        </div>
+    </main>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const userType = urlParams.get('type') || 'client';
+        const guardFields = document.getElementById('guard-fields');
+        const formTitle = document.getElementById('form-title');
+
+        if (userType === 'guard') {
+            guardFields.style.display = 'block';
+            formTitle.innerText = 'Register as Bodyguard';
+        } else {
+            formTitle.innerText = 'Register as Client';
+        }
+
+        document.getElementById('register-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Account created successfully! Redirecting to login.');
+            window.location.href = 'login.html';
+        });
+    </script>
+
+    <footer>
+        <p>All Rights Reserved &copy; 2026 Bodyguard Platform</p>
+    </footer>
+</body>
+</html>
